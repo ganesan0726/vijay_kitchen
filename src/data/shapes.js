@@ -31,4 +31,13 @@ export const SHAPES = [
   "u-shape-modular-kitchen-design-orange-white-cabinets-U2.webp",
   "u-shape-modular-kitchen-design-small-space-modern-U4.webp",
   "u-shape-modular-kitchen-design-stove-microwave-sink-U5.webp",
+  "island-modular-kitchen-design-elegant-white-island-I7.webp",
+  "island-modular-kitchen-design-minimalist-interior-I8.webp",
+  "l-shaped-modular-kitchen-design-grey-cabinets-L7.webp",
+  "l-shaped-modular-kitchen-design-minimalist-open-kitchen-white-green-wooden-furniture-L8.webp",
+  "parallel-modular-kitchen-design-island-white-countertop-black-stools-P7.webp",
+  "parallel-modular-kitchen-design-island-white-countertop-black-stools-P7.webp",
+  "straight-modular-kitchen-design-contemporary-interior-S7.webp",
+  "straight-modular-kitchen-design-elegant-S8.webp",
+  "u-shape-modular-kitchen-design-contemporary-wooden-U7.webp",
 ];
