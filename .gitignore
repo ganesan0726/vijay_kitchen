@@ -1,18 +1,53 @@
-# Build and Release Folders
+# === Build and Output ===
+dist/
+build/
+coverage/
+*.log
+
+# === Environment files ===
+.env
+.env.local
+.env.*.local
+
+# === Editor & OS files ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# === Cache ===
+.cache/
+.parcel-cache/
+.eslintcache
+*.tsbuildinfo
+
+# === Temporary files ===
+*.tmp
+*.temp
+
+# === Lock files (optional) ===
+# Uncomment below if you don’t want to commit lock files
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# === Optional: if you use build tools ===
+*.tgz
+*.zip
+
+# === Ignore Test Snapshots ===
+__snapshots__/
+
+# === Flash Builder / Flex (your previous section) ===
 bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
-# Other files and folders
 .settings/
-
-# Executables
 *.swf
 *.air
 *.ipa
 *.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
