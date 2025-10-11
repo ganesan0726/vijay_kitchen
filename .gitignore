@@ -3,6 +3,7 @@ dist/
 build/
 coverage/
 *.log
+node_modules/
 
 # === Environment files ===
 .env
