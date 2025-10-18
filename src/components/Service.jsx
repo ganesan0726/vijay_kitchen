@@ -86,7 +86,7 @@ export default function Services({
         .kitchen-type-box { transition: transform 0.18s ease, box-shadow 0.18s ease; display: inline-flex; align-items: center; justify-content: center; }
         .kitchen-type-box:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,0.06); }
         @media (max-width: 768px) {
-          .list-type { gap: 12px; }
+          .list-type { gap: 12px; align-items: center; display: flex; justify-content: center; }
           .kitchen-type-box { min-width: 140px; padding: 8px 12px; }
         }
       `}</style>
