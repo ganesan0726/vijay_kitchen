@@ -1,43 +1,56 @@
-// list of image filenames present in public/assets/shapes
-// (use the exact filenames from your folder)
-export const SHAPES = [
-  "3d-rendering-parallel-modular-kitchen-design-modern-P1.webp",
-  "beautiful-interior-parallel-modular-kitchen-design-P2.webp",
-  "elegant-parallel-modular-kitchen-design-modern-P5.webp",
-  "island-modular-kitchen-design-3d-rendering-empty-counter-I1.webp",
-  "island-modular-kitchen-design-beautiful-interior-I2.webp",
-  "island-modular-kitchen-design-fruit-bowl-counter-I4.webp",
-  "island-modular-kitchen-design-large-central-island-I5.webp",
-  "island-modular-kitchen-design-orange-cabinets-white-counter-I6.webp",
-  "island-modular-kitchen-design-premium-elegance-I3.webp",
-  "l-shaped-modular-kitchen-design-black-cabinetry-sleek-showcase-L1.webp",
-  "l-shaped-modular-kitchen-design-contemporary-sleek-appliances-minimalist-L2.webp",
-  "l-shaped-modular-kitchen-design-cozy-modern-interior-blue-chair-L4.webp",
-  "l-shaped-modular-kitchen-design-cozy-modern-interior-white-cabinets-L5.webp",
-  "l-shaped-modular-kitchen-design-cozy-modern-interior-wooden-cabinets-L6.webp",
-  "l-shaped-modular-kitchen-design-handleless-cabinets-black-glass-appliances-marble-countertops-L3.webp",
-  "modern-house-parallel-modular-kitchen-beautiful-design-P4.webp",
-  "parallel-modular-kitchen-design-interior-mockup-P6.webp",
-  "parallel-modular-kitchen-design-trendy-interior-P3.webp",
-  "straight-modular-kitchen-design-3d-rendering-wooden-modern-decor-S1.webp",
-  "straight-modular-kitchen-design-beautiful-green-interior-S2.webp",
-  "straight-modular-kitchen-design-beautiful-interior-elite-house-S4.webp",
-  "straight-modular-kitchen-design-beautiful-interior-S3.webp",
-  "straight-modular-kitchen-design-modern-interior-S6.webp",
-  "straight-modular-kitchen-design-wooden-table-interior-S5.webp",
-  "u-shape-modular-kitchen-design-blue-cabinets-orange-walls-U3.webp",
-  "u-shape-modular-kitchen-design-frosty-white-marble-backsplash-U1.webp",
-  "u-shape-modular-kitchen-design-modern-layout-U6.webp",
-  "u-shape-modular-kitchen-design-orange-white-cabinets-U2.webp",
-  "u-shape-modular-kitchen-design-small-space-modern-U4.webp",
-  "u-shape-modular-kitchen-design-stove-microwave-sink-U5.webp",
-  "island-modular-kitchen-design-elegant-white-island-I7.webp",
-  "island-modular-kitchen-design-minimalist-interior-I8.webp",
-  "l-shaped-modular-kitchen-design-grey-cabinets-L7.webp",
-  "l-shaped-modular-kitchen-design-minimalist-open-kitchen-white-green-wooden-furniture-L8.webp",
-  "parallel-modular-kitchen-design-island-white-countertop-black-stools-P7.webp",
-  "parallel-modular-kitchen-design-island-white-countertop-black-stools-P7.webp",
-  "straight-modular-kitchen-design-contemporary-interior-S7.webp",
-  "straight-modular-kitchen-design-elegant-S8.webp",
-  "u-shape-modular-kitchen-design-contemporary-wooden-U7.webp",
-];
+// src/data/shapes.js
+export async function loadShapesManifest() {
+  try {
+    const res = await fetch("/assets/shapes-manifest.json", {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      console.warn("Could not load shapes-manifest.json:", res.status);
+      return [];
+    }
+    const list = await res.json(); // array of relative paths, maybe with or without 'shapes/' prefix
+    // Normalize: ensure each entry starts with 'shapes/' and use forward slashes
+    return list.map((p) => {
+      const pp = p.split("\\").join("/"); // windows-safe
+      return pp.startsWith("shapes/") ? pp : `shapes/${pp}`;
+    });
+  } catch (err) {
+    console.error("Error loading shapes manifest:", err);
+    return [];
+  }
+}
+
+// tagsForFilename unchanged (your existing tagging function)
+export function tagsForFilename(fname) {
+  const low = fname.toLowerCase();
+  const tags = [];
+
+  if (/\b(l-|l_|l-shaped|\bl\b)/i.test(low) || /-l\d/i.test(low))
+    tags.push("L");
+  if (/\b(u-|u_|u-shaped|\bu\b)/i.test(low) || /-u\d/i.test(low))
+    tags.push("U");
+  if (/\b(p-|parallel|parallel-modular|\bp\b)/i.test(low) || /-p\d/i.test(low))
+    tags.push("P");
+  if (/\b(s-|straight|straight-modular|\bs\b)/i.test(low) || /-s\d/i.test(low))
+    tags.push("S");
+  if (/\b(i-|island|island-modular|\bi\b)/i.test(low) || /-i\d/i.test(low))
+    tags.push("I");
+
+  if (/\btv\b|television|tv[-_\s]?unit/i.test(low) || low.includes("/tv unit/"))
+    tags.push("T");
+  if (/\bbedroom\b|bed[-_\s]?room/i.test(low) || low.includes("/bedroom unit/"))
+    tags.push("B");
+  if (
+    /\bwardrobe\b|warerod|wardrobes/i.test(low) ||
+    low.includes("/warerodes/")
+  )
+    tags.push("W");
+  if (
+    /\bdoor\b|puja|puja[-_\s]?door|door unit/i.test(low) ||
+    low.includes("/door unit/")
+  )
+    tags.push("D");
+
+  if (tags.length === 0) tags.push("P");
+  return Array.from(new Set(tags));
+}

@@ -17,9 +17,9 @@ export default function Brands() {
     >
       <div className="container-1200">
         <div className="title">
-          <h2 id="brands-heading">Top Modular Kitchen Brands We Deal In</h2>
+          <h2 id="brands-heading">Top Brands We Deal In</h2>
           <p className="font-14">
-            Trusted kitchen appliance and hardware brands we partner with.
+            Trusted appliance and hardware brands we partner with.
           </p>
         </div>
 

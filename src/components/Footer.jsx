@@ -6,33 +6,46 @@ export default function Footer() {
   const OWNER = "Vijayrajan";
   const MAP_LINK = "https://maps.app.goo.gl/J1db42qcLngLk2oT9?g_st=iw";
   const WA_LINK = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-    `Hello ${OWNER}! I'm interested in a modular kitchen.`,
+    `Hello ${OWNER}! I'm interested in your services.`,
   )}`;
 
   const scrollToContact = (e) => {
     e && e.preventDefault();
     const el = document.getElementById("contact");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      el.setAttribute("tabindex", "-1");
-      el.focus({ preventScroll: true });
-      el.removeAttribute("tabindex");
-    } else {
-      window.open(WA_LINK, "_blank", "noopener,noreferrer");
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.open(WA_LINK, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <footer className="footer-mid" aria-labelledby="footer-heading">
+    <footer
+      className="footer-mid"
+      aria-labelledby="footer-heading"
+      style={{
+        background: "#fff",
+        borderTop: "1px solid #eee",
+        padding: "24px 0",
+      }}
+    >
       <div className="container-1200">
         <h2 id="footer-heading" className="small" style={{ marginBottom: 12 }}>
           Get in touch
         </h2>
 
-        <div className="footer-grid">
+        <div
+          className="footer-grid"
+          style={{ display: "flex", justifyContent: "space-between", gap: 24 }}
+        >
           <div className="footer-column">
             <span className="footer-head">Our Company</span>
-            <nav className="footer-nav">
+            <nav
+              className="footer-nav"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 6,
+                marginTop: 8,
+              }}
+            >
               <a href="#" onClick={scrollToContact}>
                 Book a Consultation
               </a>
@@ -45,7 +58,15 @@ export default function Footer() {
 
           <div className="footer-column">
             <span className="footer-head">Need Help</span>
-            <nav className="footer-nav">
+            <nav
+              className="footer-nav"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 6,
+                marginTop: 8,
+              }}
+            >
               <a href="#" onClick={scrollToContact}>
                 Contact Us
               </a>
@@ -56,17 +77,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-bottom">
+        <div
+          className="footer-bottom"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 18,
+          }}
+        >
           <div className="footer-left">
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
               className="brand-footer"
             >
-              Vijay's Modular Kitchen
+              Vijay's Smart Kitchen
             </a>
-
-            <div className="other-links">
+            <div style={{ marginTop: 8 }}>
               <div>
                 Owner: <strong>{OWNER}</strong>
               </div>
@@ -74,12 +102,15 @@ export default function Footer() {
                 Phone: <a href={`tel:+91${PHONE}`}>+91-{PHONE.slice(2)}</a>
               </div>
               <div className="small muted">
-                © 2015-2025 Vijay's Modular Kitchen. All rights reserved.
+                © 2015-2025 Vijay's Smart Kitchen. All rights reserved.
               </div>
             </div>
           </div>
 
-          <div className="footer-actions">
+          <div
+            className="footer-actions"
+            style={{ display: "flex", gap: 8, alignItems: "center" }}
+          >
             <a
               className="btn btn-primary btn-sm"
               href={WA_LINK}
@@ -88,7 +119,6 @@ export default function Footer() {
             >
               WhatsApp
             </a>
-
             <a
               className="btn btn-ghost"
               href={MAP_LINK}
@@ -98,30 +128,6 @@ export default function Footer() {
             >
               <FaMapLocationDot style={{ marginRight: 8 }} /> Location
             </a>
-
-            <div className="social-row" aria-hidden>
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/insta.svg" alt="Instagram" />
-              </a>
-              <a
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/facebook.svg" alt="Facebook" />
-              </a>
-              <a
-                href="https://www.youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/youtube.svg" alt="YouTube" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

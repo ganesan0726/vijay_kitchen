@@ -33,10 +33,10 @@ export default function About() {
     <section id="about" className="section about-section">
       <div className="container-1200">
         <div className="title">
-          <h2>Modular Kitchen Designs</h2>
+          <h2>Smart Modular Designs</h2>
           <p className="font-14">
-            Explore an extensive range of modular kitchens with stylish,
-            durable, and affordable solutions.
+            Explore an extensive range of modular designswith stylish, durable,
+            and affordable solutions.
           </p>
         </div>
 

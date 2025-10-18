@@ -1,27 +1,41 @@
 import React, { useState } from "react";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
-import Types from "./components/Types";
+import Services from "./components/Service";
 import Projects from "./components/Projects";
 import About from "./components/About";
 import Brands from "./components/Brands";
 import ContactBlock from "./components/ContactBlock";
 import Footer from "./components/Footer";
+import OutputGallery from "./components/OutputGalary";
 
 export default function App() {
-  // selectedType: "ALL" | "L" | "U" | "P" | "S" | "I"
+  const [selectedService, setSelectedService] = useState("All");
   const [selectedType, setSelectedType] = useState("ALL");
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        onSelectService={(k) => {
+          setSelectedService(k);
+        }}
+      />
       <main>
         <Hero />
-        <Types selectedType={selectedType} onSelectType={setSelectedType} />
-        <Projects selectedType={selectedType} />
+        <Services
+          selectedService={selectedService}
+          onSelectService={(k) => setSelectedService(k)}
+          selectedType={selectedType}
+          onSelectType={(t) => setSelectedType(t)}
+        />
+        <Projects
+          selectedService={selectedService}
+          selectedType={selectedType}
+        />
         <About />
         <Brands />
         <ContactBlock />
+        <OutputGallery />
       </main>
       <Footer />
     </>

@@ -35,7 +35,7 @@ export default function Navbar() {
           className="brand"
           onClick={(e) => handleNavClick(e, "hero")}
         >
-          <strong className="brand-name">Vijay's Modular Kitchen</strong>
+          <strong className="brand-name">Vijay's Smart Kitchen</strong>
         </a>
 
         <nav aria-label="Primary navigation" className={open ? "open" : ""}>
@@ -55,6 +55,14 @@ export default function Navbar() {
             <li>
               <a href="#hero" onClick={(e) => handleNavClick(e, "hero")}>
                 Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#services"
+                onClick={(e) => handleNavClick(e, "services")}
+              >
+                Services
               </a>
             </li>
             <li>

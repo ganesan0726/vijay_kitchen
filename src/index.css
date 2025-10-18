@@ -3,7 +3,7 @@
 :root {
   --accent: #f3601e;
   --text: #222;
-  --muted: #666;
+  --muted: #a3a2a2;
   --bg: #fff;
   --max-width: 1200px;
   scroll-behavior: smooth;
@@ -39,6 +39,22 @@ ul {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 16px;
+}
+
+/* COMMON UTILITIES (ADDED) */
+.font-14 {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+.center {
+  text-align: center;
+}
+.hidden {
+  display: none !important;
 }
 
 /* HEADER */
@@ -82,6 +98,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
+  gap: 12px;
 }
 
 .brand-name {
@@ -257,7 +274,7 @@ ul {
 
 /* SECTION BASE */
 .section {
-  padding: 60px 0;
+  padding: 20px 0;
 }
 .title {
   text-align: center;
@@ -279,12 +296,14 @@ ul {
 /* TYPES SECTION */
 .list-type {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 24px;
 }
 .kitchen-type-box {
   text-align: center;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.25s, box-shadow 0.25s;
 }
 .kitchen-type-box:hover {
@@ -342,6 +361,17 @@ ul {
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--muted);
+}
+
+/* QUICK VIEW (ADDED) */
+.quick-view {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* === About / Why Choose section === */
@@ -413,6 +443,9 @@ ul {
   .about-icon {
     width: 64px;
     height: 64px;
+  }
+  .about-text {
+    font-size: 0.9rem;
   }
 }
 
